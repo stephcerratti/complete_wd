@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <title>JavaScript</title>
+    </head>
+
+    <body>
+
+        <!-- html for "for" loop -->
+        <div id="tweetDiv"></div>
+
+
+        <!-- html for "while" loop -->
+        <p>How many fingers are you holding up?</p>
+        <select id="myNumber">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <button id="guess">Guess!</button>
+
+
+        <!-- html for functions -->
+        <p>How many fingers again?</p>
+        <select id="myNumberTwo">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <button id="guessTwo">Guess Again!</button>
+
+
+
+        <script type="text/javascript">
+        
+        // FOR LOOP
+        let tweetString = "";
+        let tweets = ["Hi everyone!", "I like olives", "I need a coffee!"];
+        for ( var i = 0; i < tweets.length; i++ ) {
+            tweetString += "<p>" + tweets[i] + "</p>";
+        }
+        
+        document.getElementById("tweetDiv").innerHTML = tweetString;
+
+
+        // WHILE LOOP
+        
+        document.getElementById("guess").onclick = function() {
+            let myNumber = document.getElementById("myNumber").value;
+            let gotIt = false;
+            let numberOfGuesses = 1;
+
+            while (gotIt == false) {
+                let guess = Math.floor(Math.random() * 6);
+                if (guess == myNumber) {
+                // computer is correct!
+                    gotIt = true;
+                    alert("Got it! It was " + guess + " . It took me " + numberOfGuesses + " guesses.")
+                } else {
+                //computer is wrong
+                    numberOfGuesses++;
+                }
+            }
+        }
+
+        // FUNCTIONS
+        function average(a, b) {
+            return((a + b) / 2);
+        }
+
+        let x = 5;
+        let y = 10;
+
+        console.log(average(15, 3));
+
+        function doAGuess(correctAnswer) {
+            let secondGuess = Math.floor(Math.random() * 6);
+                if (secondGuess == correctAnswer) {
+                // computer is correct!
+                    return(true);
+                } else {
+                //computer is wrong
+                    return(false);
+                }
+        }
+
+        document.getElementById("guessTwo").onclick = function() {
+            let mySecondNumber = document.getElementById("myNumberTwo").value;
+            let gotItAgain = false;
+            let numberOfSecondGuesses = 1;
+
+            while (gotItAgain == false) {
+                if (doAGuess(mySecondNumber) == true) {
+                    gotItAgain == true;
+                    alert("Got it! It was " + mySecondNumber + " . It took me " + numberOfSecondGuesses + " guesses.")
+                } else {
+                    numberOfSecondGuesses++;
+                }
+            }
+        }
+
+
+
+        </script>
+    </body>;
+</html>
